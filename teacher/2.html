@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>teacher</title>
+</head>
+<body>
+    <div id="thir">
+        <ul class="lio" id="fir"></ul>
+        <ul id="sec"></ul>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var arrFir=[{"name":"第一组"},{"name":"第二组"},{"name":"第三组"}];
+        var arrSec=[{"name":"031802443"},{"name":"031802217"},{"name":"031802237"}];
+        for(var i=0;i<arrFir.length;i++){
+            /*请求第i组的小组信息*/
+            $('#fir').append('<ul id='+arrFir[i].name+'>'+arrFir[i].name+'</ul> ');
+            for(var j=0;j<arrSec.length;j++){
+                /*请求第j组的组员数据*/
+                $('#'+arrFir[i].name+'').append('<li id='+i+''+arrSec[j].name+'>'+arrSec[j].name+'</li> ');
+                $('#'+i+arrSec[j].name+'').on('click', function(e) {
+                    e.stopPropagation();
+                    alert("点击后出现具体投票信息")
+                });
+            }
+            $('#'+arrFir[i].name+'').on('click', function(e) {
+                alert("点击后跳转到小组页面");
+            });
+        }
+    });
+</script>
+</html>
